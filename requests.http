@@ -1,38 +1,147 @@
-###
-POST http://localhost:3000/api/users HTTP/1.1
+### Crear proveedor
+POST http://localhost:3000/api/providers HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Nikola Tesla",
-  "age": 80,
-  "email": "nikolatesla@email.com"
+  "_id": "Proveedor_001",
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "correo": "juan.perez@example.com",
+  "telefono": "123456789",
+  "direccion": "Calle Falsa 123, Madrid",
+  "compras": [
+    {
+      "compra_id": "compra_001",
+      "fecha": "2024-08-01",
+      "total": 150.00,
+      "productos_servicios": [
+        {
+          "producto_servicio_id": "producto_001",
+          "nombre": "Entrenamiento Personalizado",
+          "precio": 100.00
+        },
+        {
+          "producto_servicio_id": "producto_002",
+          "nombre": "Suplemento Proteico",
+          "precio": 50.00
+        }
+      ]
+    }
+  ]
 }
 
-###
-POST http://localhost:3000/api/users HTTP/1.1
+### Crear cliente
+POST http://localhost:3000/api/clients HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Esteban Tamayo",
-  "age": 22,
-  "email": "estebantamayo@hotmail.com"
+  "_id": "cliente_001",
+  "nombre": "Ana",
+  "apellido": "García",
+  "correo": "ana.garcia@example.com",
+  "telefono": "987654321",
+  "ventas": [
+    {
+      "venta_id": "venta_001",
+      "fecha": "2024-08-02",
+      "total": 200.00,
+      "productos_servicios": [
+        {
+          "producto_servicio_id": "producto_003",
+          "nombre": "Clase de Yoga",
+          "precio": 150.00
+        },
+        {
+          "producto_servicio_id": "producto_004",
+          "nombre": "Manta de Yoga",
+          "precio": 50.00
+        }
+      ]
+    }
+  ]
 }
 
-###
-GET http://localhost:3000/api/users HTTP/1.1
-
-###
-GET http://localhost:3000/api/users/6a2b469533788f10efd709a8 HTTP/1.1
-
-###
-DELETE http://localhost:3000/api/users/6a2b472333788f10efd709a9 HTTP/1.1
-
-###
-PUT http://localhost:3000/api/users/6a2b478133788f10efd709aa HTTP/1.1
+### Crear producto/servicio 1
+POST http://localhost:3000/api/products HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Karoll Romero",
-  "age": 17,
-  "email": "yesidromero@gmail.com"
+  "_id": "producto_001",
+  "nombre": "Entrenamiento Personalizado",
+  "descripcion": "Sesión de entrenamiento personalizado con un entrenador certificado.",
+  "precio": 100.00,
+  "tipo": "Servicio"
 }
+
+### Crear producto/servicio 2
+POST http://localhost:3000/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+  "_id": "producto_002",
+  "nombre": "Suplemento Proteico",
+  "descripcion": "Proteína en polvo para apoyar la ganancia muscular.",
+  "precio": 50.00,
+  "tipo": "Producto"
+}
+
+### Crear compra
+POST http://localhost:3000/api/purchases HTTP/1.1
+Content-Type: application/json
+
+{
+  "_id": "compra_001",
+  "proveedor_id": "Proveedor_001",
+  "fecha": "2024-08-01",
+  "total": 150.00,
+  "productos_servicios": [
+    {
+      "producto_servicio_id": "producto_001",
+      "nombre": "Entrenamiento Personalizado",
+      "precio": 100.00
+    },
+    {
+      "producto_servicio_id": "producto_002",
+      "nombre": "Suplemento Proteico",
+      "precio": 50.00
+    }
+  ]
+}
+
+### Crear venta
+POST http://localhost:3000/api/sales HTTP/1.1
+Content-Type: application/json
+
+{
+  "_id": "venta_001",
+  "cliente_id": "cliente_001",
+  "fecha": "2024-08-02",
+  "total": 200.00,
+  "productos_servicios": [
+    {
+      "producto_servicio_id": "producto_003",
+      "nombre": "Clase de Yoga",
+      "precio": 150.00
+    },
+    {
+      "producto_servicio_id": "producto_004",
+      "nombre": "Manta de Yoga",
+      "precio": 50.00
+    }
+  ]
+}
+
+### Obtener todos los proveedores
+GET http://localhost:3000/api/providers HTTP/1.1
+
+### Obtener todos los clientes
+GET http://localhost:3000/api/clients HTTP/1.1
+
+### Obtener todos los productos
+GET http://localhost:3000/api/products HTTP/1.1
+
+### Obtener todas las compras
+GET http://localhost:3000/api/purchases HTTP/1.1
+
+### Obtener todas las ventas
+GET http://localhost:3000/api/sales HTTP/1.1
