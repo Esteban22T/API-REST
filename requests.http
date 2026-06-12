@@ -1,3 +1,7 @@
+# =====================
+# PROVEEDORES
+# =====================
+
 ### Crear proveedor
 POST http://localhost:3000/api/providers HTTP/1.1
 Content-Type: application/json
@@ -30,6 +34,32 @@ Content-Type: application/json
   ]
 }
 
+### Obtener todos los proveedores
+GET http://localhost:3000/api/providers HTTP/1.1
+
+### Obtener proveedor por ID
+GET http://localhost:3000/api/providers/Proveedor_001 HTTP/1.1
+
+### Actualizar proveedor
+PUT http://localhost:3000/api/providers/Proveedor_001 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "apellido": "Ramirez",
+  "correo": "juan.ramirez@example.com",
+  "telefono": "999888777",
+  "direccion": "Avenida Siempreviva 742, Bogotá"
+}
+
+### Eliminar proveedor
+DELETE http://localhost:3000/api/providers/Proveedor_001 HTTP/1.1
+
+
+# =====================
+# CLIENTES
+# =====================
+
 ### Crear cliente
 POST http://localhost:3000/api/clients HTTP/1.1
 Content-Type: application/json
@@ -61,6 +91,31 @@ Content-Type: application/json
   ]
 }
 
+### Obtener todos los clientes
+GET http://localhost:3000/api/clients HTTP/1.1
+
+### Obtener cliente por ID
+GET http://localhost:3000/api/clients/cliente_001 HTTP/1.1
+
+### Actualizar cliente
+PUT http://localhost:3000/api/clients/cliente_001 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "apellido": "Martínez",
+  "correo": "ana.martinez@example.com",
+  "telefono": "111222333"
+}
+
+### Eliminar cliente
+DELETE http://localhost:3000/api/clients/cliente_001 HTTP/1.1
+
+
+# =====================
+# PRODUCTOS Y SERVICIOS
+# =====================
+
 ### Crear producto/servicio 1
 POST http://localhost:3000/api/products HTTP/1.1
 Content-Type: application/json
@@ -85,6 +140,31 @@ Content-Type: application/json
   "tipo": "Producto"
 }
 
+### Obtener todos los productos
+GET http://localhost:3000/api/products HTTP/1.1
+
+### Obtener producto por ID
+GET http://localhost:3000/api/products/producto_001 HTTP/1.1
+
+### Actualizar producto
+PUT http://localhost:3000/api/products/producto_001 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Entrenamiento Personalizado Premium",
+  "descripcion": "Sesión de entrenamiento personalizado con nutricionista incluido.",
+  "precio": 150.00,
+  "tipo": "Servicio"
+}
+
+### Eliminar producto
+DELETE http://localhost:3000/api/products/producto_001 HTTP/1.1
+
+
+# =====================
+# COMPRAS
+# =====================
+
 ### Crear compra
 POST http://localhost:3000/api/purchases HTTP/1.1
 Content-Type: application/json
@@ -107,6 +187,37 @@ Content-Type: application/json
     }
   ]
 }
+
+### Obtener todas las compras
+GET http://localhost:3000/api/purchases HTTP/1.1
+
+### Obtener compra por ID
+GET http://localhost:3000/api/purchases/compra_001 HTTP/1.1
+
+### Actualizar compra
+PUT http://localhost:3000/api/purchases/compra_001 HTTP/1.1
+Content-Type: application/json
+
+{
+  "proveedor_id": "Proveedor_001",
+  "fecha": "2024-08-05",
+  "total": 200.00,
+  "productos_servicios": [
+    {
+      "producto_servicio_id": "producto_001",
+      "nombre": "Entrenamiento Personalizado",
+      "precio": 200.00
+    }
+  ]
+}
+
+### Eliminar compra
+DELETE http://localhost:3000/api/purchases/compra_001 HTTP/1.1
+
+
+# =====================
+# VENTAS
+# =====================
 
 ### Crear venta
 POST http://localhost:3000/api/sales HTTP/1.1
@@ -131,17 +242,28 @@ Content-Type: application/json
   ]
 }
 
-### Obtener todos los proveedores
-GET http://localhost:3000/api/providers HTTP/1.1
-
-### Obtener todos los clientes
-GET http://localhost:3000/api/clients HTTP/1.1
-
-### Obtener todos los productos
-GET http://localhost:3000/api/products HTTP/1.1
-
-### Obtener todas las compras
-GET http://localhost:3000/api/purchases HTTP/1.1
-
 ### Obtener todas las ventas
 GET http://localhost:3000/api/sales HTTP/1.1
+
+### Obtener venta por ID
+GET http://localhost:3000/api/sales/venta_001 HTTP/1.1
+
+### Actualizar venta
+PUT http://localhost:3000/api/sales/venta_001 HTTP/1.1
+Content-Type: application/json
+
+{
+  "cliente_id": "cliente_001",
+  "fecha": "2024-08-10",
+  "total": 300.00,
+  "productos_servicios": [
+    {
+      "producto_servicio_id": "producto_003",
+      "nombre": "Clase de Yoga",
+      "precio": 300.00
+    }
+  ]
+}
+
+### Eliminar venta
+DELETE http://localhost:3000/api/sales/venta_001 HTTP/1.1
